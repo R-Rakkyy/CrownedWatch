@@ -42,7 +42,7 @@ async def receive(websocket: WebSocket):
         pass  # malformed message, ignore for now
 
 
-@router.websocket("/websocket/party")
+@router.websocket("/ws/party")
 async def party_socket(websocket: WebSocket):
     if not allowed(websocket):
         await websocket.close(code = 1008)
