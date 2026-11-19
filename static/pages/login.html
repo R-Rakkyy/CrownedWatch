@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enter</title>
+<link rel="icon" href="/static/favicon.svg">
+<link rel="stylesheet" href="/static/css/base.css">
+
+<main class="card">
+    <form method="post" action="/login">
+        <input name="name" placeholder="Username" autocomplete="username" required autofocus>
+        <input name="key" type="password" placeholder="Key" autocomplete="current-password" required>
+        <input type="submit" hidden>
+    </form>
+    <p id="err" hidden>Wrong username or key.</p>
+</main>
+
+<script type="module" src="/static/js/login.js"></script>

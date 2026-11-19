@@ -1,0 +1,22 @@
+#wait,
+#gesture {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    text-shadow: 0 0 4px #000, 0 0 8px #000;
+}
+
+#pl #join {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    padding: .5rem 1rem;
+    background: #000c;
+    font-size: 1.1rem;
+    z-index: 3;
+}

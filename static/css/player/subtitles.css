@@ -1,0 +1,29 @@
+/* Subtitles: Only for 'Plain' mode. */
+
+#subs {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: calc(max(6%, 1rem) + var(--lift, 0) * 1%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .15em;
+    pointer-events: none;
+    font-family: var(--font, inherit);
+    font-size: calc(var(--size, 100) / 100 * 4.2cqh);
+}
+
+#pl:not(.idle) #subs {
+    bottom: calc(max(6%, 6.5rem) + var(--lift, 0) * 1%);
+}
+
+.cue {
+    color: var(--c, #fff);
+    background: var(--bg, transparent);
+    text-shadow: var(--edge, none);
+    padding: 0 .4em;
+    text-align: center;
+    white-space: pre-wrap;
+    line-height: 1.3;
+}

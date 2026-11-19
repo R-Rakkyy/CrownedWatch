@@ -1,0 +1,46 @@
+main.wide {
+    max-width: 80rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    gap: 1rem;
+}
+
+.panel {
+    min-width: 0;
+    border: 1px solid var(--line);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    overflow-wrap: anywhere;
+}
+
+.panel h3 {
+    margin: 0 0 .25rem;
+    font-size: .9rem;
+    color: var(--mute);
+    font-weight: normal;
+}
+
+.kv {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.kv > :first-child {
+    min-width: 0;
+}
+
+.kv > :last-child {
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 60%;
+}
+
+progress.wide {
+    width: 100%;
+}

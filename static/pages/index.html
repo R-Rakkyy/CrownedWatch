@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medias</title>
+<link rel="icon" href="/static/favicon.svg">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/medias.css">
+
+<header></header>
+
+<main>
+    <div id="bar">
+        <nav id="crumbs"></nav>
+        <button id="archbtn">archive</button>
+    </div>
+
+    <div id="tools" hidden>
+        <button id="newfolder">new folder</button>
+        <label class="btn" id="uplabel">
+            upload
+            <input id="file" type="file" accept="video/*,.mkv" multiple hidden>
+        </label>
+    </div>
+
+    <div id="xfer" hidden>
+        <progress id="xbar"></progress>
+        <span id="xtext"></span>
+    </div>
+
+    <ul id="list"></ul>
+</main>
+
+<dialog id="mv">
+    <form method="dialog">
+        <p>Move <b id="mvname"></b> to</p>
+        <select id="mvsel"></select>
+        <p>
+            <button value="ok">Move</button>
+            <button value="cancel">Cancel</button>
+        </p>
+    </form>
+</dialog>
+
+<script type="module" src="/static/js/medias.js"></script>

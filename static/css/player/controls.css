@@ -1,0 +1,90 @@
+.ui {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: .5rem .75rem;
+    z-index: 2;
+}
+
+.top {
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: linear-gradient(#000b, transparent);
+}
+
+.bottom {
+    bottom: 0;
+    padding-top: 1.5rem;
+    background: linear-gradient(transparent, #000c);
+}
+
+#title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#pl button {
+    height: 2.75rem;
+    min-width: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    justify-content: center;
+}
+
+#pl button:hover {
+    color: var(--hover);
+}
+
+#pl svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
+    display: block;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.bar .sp {
+    flex: 1;
+}
+
+#time,
+#chapnow {
+    font-size: .85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    margin-left: .5rem;
+}
+
+#chapnow {
+    color: var(--mute);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+#vol {
+    width: 6rem;
+}
+
+#cc[aria-pressed=true] {
+    color: var(--accent);
+}
+
+@media (max-width: 40rem) {
+    #vol,
+    #chapnow {
+        display: none;
+    }
+}

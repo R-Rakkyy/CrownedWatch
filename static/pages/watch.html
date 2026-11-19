@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Player</title>
+<link rel="icon" href="/static/favicon.svg">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/player/player.css">
+<link rel="stylesheet" href="/static/css/player/subtitles.css">
+<link rel="stylesheet" href="/static/css/player/controls.css">
+<link rel="stylesheet" href="/static/css/player/seekbar.css">
+<link rel="stylesheet" href="/static/css/player/messages.css">
+<link rel="stylesheet" href="/static/css/player/panel.css">
+
+<header></header>
+
+<p id="idle">Nothing playing. Pick something in Medias.</p>
+
+<div id="pl" hidden role="region" aria-label="Video player">
+    <video id="video" playsinline></video>
+    <div id="subs" aria-hidden="true"></div>
+    <div id="wait" hidden role="status"></div>
+    <div id="gesture" hidden aria-hidden="true"></div>
+    <button id="join" hidden>Click to join</button>
+
+    
+    
+    <div class="top ui">
+        <span id="title"></span>
+        <button id="gear" data-icon="settings" aria-label="Settings"
+                aria-haspopup="dialog" aria-expanded="false"></button>
+    </div>
+
+    
+    
+    <div class="bottom ui">
+        <div id="seek" role="slider" tabindex="0" aria-label="Seek"
+             aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+            <div class="track">
+                <div class="buf"></div>
+                <div class="played"></div>
+                <div id="ticks"></div>
+            </div>
+            <div class="thumb"></div>
+            <div id="tip" hidden></div>
+        </div>
+
+        <div class="bar">
+            <button id="prev" data-icon="prev" aria-label="Previous episode" hidden></button>
+            <button id="play" data-icon="play" aria-label="Play"></button>
+            <button id="next" data-icon="next" aria-label="Next episode" hidden></button>
+            <span id="time">0:00 / 0:00</span>
+            <span id="chapnow"></span>
+            <span class="sp"></span>
+            <button id="mute" data-icon="volume" aria-label="Mute" aria-pressed="false"></button>
+            <input id="vol" type="range" min="0" max="100" step="5" aria-label="Volume">
+            <button id="cc" data-icon="cc" aria-label="Subtitles" aria-pressed="false"></button>
+            <button id="fs" data-icon="fs" aria-label="Fullscreen"></button>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    <div id="panel" role="dialog" aria-label="Player settings" hidden>
+        <div class="phead">
+            <div role="tablist" aria-label="Settings sections">
+                <button role="tab" id="t-audio" data-tab="audio"
+                        aria-controls="p-audio">Audio &amp; Quality</button>
+                <button role="tab" id="t-subs" data-tab="subs"
+                        aria-controls="p-subs">Subtitles</button>
+                <button role="tab" id="t-chapters" data-tab="chapters"
+                        aria-controls="p-chapters">Chapters</button>
+                <button role="tab" id="t-other" data-tab="other"
+                        aria-controls="p-other">Other</button>
+            </div>
+            <button id="pclose" data-icon="close" aria-label="Close settings"></button>
+        </div>
+
+        <div class="pbody">
+            <section role="tabpanel" id="p-audio" aria-labelledby="t-audio" hidden>
+                <div class="plist" id="audio-list" role="radiogroup" aria-label="Audio track"></div>
+
+                <label>Quality
+                    <select id="quality"></select>
+                </label>
+                <label>Buffer
+                    <select id="buffer">
+                        <option value="30">30 s</option>
+                        <option value="60">1 min</option>
+                        <option value="120">2 min</option>
+                        <option value="300">5 min</option>
+                        <option value="600">10 min</option>
+                    </select>
+                </label>
+            </section>
+
+            <section role="tabpanel" id="p-subs" aria-labelledby="t-subs" hidden>
+                <div class="plist" id="sub-list" role="radiogroup" aria-label="Subtitle track"></div>
+
+                <label id="rendering" hidden>Style
+                    <select id="subrender">
+                        <option value="styled">Original</option>
+                        <option value="plain">Plain</option>
+                    </select>
+                </label>
+
+                <fieldset id="ss">
+                    <legend>Timing and position</legend>
+                    <label>Delay
+                        <span class="row">
+                            <input type="range" name="offset" min="-10" max="10" step="0.1">
+                            <output id="o-offset"></output>
+                        </span>
+                    </label>
+                    <label>Raise
+                        <span class="row">
+                            <input type="range" name="lift" min="0" max="60" step="1">
+                            <output id="o-lift"></output>
+                        </span>
+                    </label>
+
+                    <legend>Look</legend>
+                    <label>Use my style
+                        <input type="checkbox" name="on">
+                    </label>
+                    <label>Font
+                        <select name="font">
+                            <option value="">Default</option>
+                            <option value="sans-serif">Sans</option>
+                            <option value="serif">Serif</option>
+                            <option value="monospace">Mono</option>
+                            <option value="cursive">Casual</option>
+                        </select>
+                    </label>
+                    <label>Size
+                        <span class="row">
+                            <input type="range" name="size" min="50" max="250" step="10">
+                            <output id="o-size"></output>
+                        </span>
+                    </label>
+                    <label>Text color
+                        <input type="color" name="color">
+                    </label>
+                    <label>Background
+                        <span class="row">
+                            <input type="color" name="bg">
+                            <input type="range" name="bgAlpha" min="0" max="100" step="5">
+                            <output id="o-bgAlpha"></output>
+                        </span>
+                    </label>
+                    <label>Edge
+                        <select name="edge">
+                            <option value="none">None</option>
+                            <option value="outline">Outline</option>
+                            <option value="shadow">Shadow</option>
+                        </select>
+                    </label>
+
+                    <div id="sspreview" aria-hidden="true">
+                        <div class="cue">Sample subtitle</div>
+                    </div>
+                    <button type="button" id="ssreset">Reset to default</button>
+                </fieldset>
+            </section>
+
+            <section role="tabpanel" id="p-chapters" aria-labelledby="t-chapters" hidden>
+                <div class="plist" id="chap-list"></div>
+            </section>
+
+            <section role="tabpanel" id="p-other" aria-labelledby="t-other" hidden>
+                <label>Picture
+                    <select id="fit">
+                        <option value="contain">Fit</option>
+                        <option value="cover">Fill (crop)</option>
+                        <option value="fill">Stretch</option>
+                    </select>
+                </label>
+                <label>Arrow keys skip
+                    <select id="step">
+                        <option value="5">5 s</option>
+                        <option value="10">10 s</option>
+                        <option value="30">30 s</option>
+                    </select>
+                </label>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div id="live" class="sr" role="status" aria-live="polite"></div>
+
+<script src="/static/vendor/hls.min.js"></script>
+<script src="/static/vendor/jassub/jassub.umd.js"></script>
+<script type="module" src="/static/js/player.js"></script>

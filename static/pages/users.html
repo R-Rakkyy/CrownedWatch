@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Users</title>
+<link rel="icon" href="/static/favicon.svg">
+<link rel="stylesheet" href="/static/css/base.css">
+
+<header></header>
+
+<main>
+    <ul id="userlist"></ul>
+
+    <form id="adduser">
+        <input name="name" placeholder="name" required>
+        <select name="role">
+            <option>guest</option>
+            <option>admin</option>
+        </select>
+        <button>Add / reset key</button>
+    </form>
+</main>
+
+<script type="module" src="/static/js/users.js"></script>

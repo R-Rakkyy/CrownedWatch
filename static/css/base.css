@@ -1,0 +1,157 @@
+/* Palette: lines #4D4E49 and #626868, accent #DCB789, hover #96846A */
+:root {
+    color-scheme: dark;
+    font-family: system-ui, sans-serif;
+    --base: #1b1c1a;
+    --fg: #e8e4dc;
+    --mute: #9b9e99;
+    --line: #4d4e49;
+    --border: #626868;
+    --accent: #dcb789;
+    --hover: #96846a;
+}
+
+body {
+    margin: 0;
+    background: var(--base);
+    color: var(--fg);
+}
+
+header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+header form {
+    margin: 0;
+}
+
+#who {
+    margin-left: auto;
+}
+
+main {
+    padding: 1rem;
+    max-width: 60rem;
+    margin: auto;
+}
+
+.card {
+    max-width: 20rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+input,
+button,
+select {
+    padding: .5rem;
+    border: 1px solid var(--border);
+    background: var(--base);
+    color: inherit;
+}
+
+button,
+.btn,
+select,
+summary,
+input:not([type]),
+input[type=text],
+input[type=password] {
+    height: 2rem;
+    box-sizing: border-box;
+    padding: 0 .75rem;
+    font: inherit;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover,
+summary:hover {
+    border-color: var(--hover);
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--hover);
+}
+
+.btn {
+    border: 1px solid var(--border);
+    background: var(--base);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+small {
+    color: var(--mute);
+    overflow-wrap: anywhere;
+}
+
+progress {
+    width: 6rem;
+    accent-color: var(--accent);
+}
+
+#err {
+    color: #e08a7a;
+}
+
+input[type=range] {
+    padding: 0;
+    border: 0;
+    background: none;
+    accent-color: var(--accent);
+}
+
+input[type=checkbox] {
+    accent-color: var(--accent);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#adduser {
+    flex-direction: row;
+}
