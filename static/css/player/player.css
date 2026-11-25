@@ -1,5 +1,6 @@
 
-#idle {
+#idle,
+#loading {
     color: var(--mute);
     margin-top: 20vh;
     text-align: center;

@@ -19,12 +19,14 @@ function requestWantedMedia(party) {
 }
 
 function onPartyState(party) {
+    document.querySelector("#loading").hidden = true
     state.party = party
     state.partyAt = Date.now()
     paintWait()
 
     if (Math.abs(party.position - video.currentTime) < 2) state.seekGuard = 0
 
+    if (!party.media_id && !state.wanted) document.querySelector("#idle").hidden = false
     if (requestWantedMedia(party)) return
     if (party.media_id !== state.id) openMedia(party.media_id)
     else sync()
